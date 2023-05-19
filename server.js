@@ -16,7 +16,7 @@ const env = require("dotenv").config();
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
 
-const MoviesDB = require("./modules/moviesDB.js");
+// const MoviesDB = require("./modules/moviesDB.js");
 const db = new MoviesDB();
 
 
@@ -93,10 +93,14 @@ app.delete('/api/movies/:id', (req, res) => {
         });
 });
 
-db.initialize(process.env.MONGODB_CONN_STRING).then(() => {
-    app.listen(HTTP_PORT, () => {
-        console.log(`server listening on: ${HTTP_PORT}`);
-    });
-}).catch((err) => {
-    console.log(err);
-});
+// db.initialize(process.env.MONGODB_CONN_STRING).then(() => {
+//     app.listen(HTTP_PORT, () => {
+//         console.log(`server listening on: ${HTTP_PORT}`);
+//     });
+// }).catch((err) => {
+//     console.log(err);
+// });
+
+app.listen(HTTP_PORT, () => {
+    console.log("running")
+})
