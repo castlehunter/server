@@ -16,8 +16,8 @@ const env = require("dotenv").config();
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
 
-// const MoviesDB = require("./modules/moviesDB.js");
-// const db = new MoviesDB();
+const MoviesDB = require("./modules/moviesDB.js");
+const db = new MoviesDB();
 
 
 app.use(express.json());
