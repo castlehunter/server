@@ -93,14 +93,16 @@ app.delete('/api/movies/:id', (req, res) => {
         });
 });
 
-db.initialize('mongodb+srv://vvxiaobai:jx9EtluVV5JvOZoB@cluster0.4jdnb6b.mongodb.net/sample_mflix?retryWrites=true&w=majority').then(() => {
-    app.listen(HTTP_PORT, () => {
-        console.log(`server listening on: ${HTTP_PORT}`);
-    });
-}).catch((err) => {
-    console.log(err);
-});
+// db.initialize('mongodb+srv://vvxiaobai:jx9EtluVV5JvOZoB@cluster0.4jdnb6b.mongodb.net/sample_mflix?retryWrites=true&w=majority').then(() => {
+//     app.listen(HTTP_PORT, () => {
+//         console.log(`server listening on: ${HTTP_PORT}`);
+//     });
+// }).catch((err) => {
+//     console.log(err);
+// });
 
-// app.listen(HTTP_PORT, () => {
-//     console.log("running")
-// })
+db.initialize('mongodb+srv://vvxiaobai:jx9EtluVV5JvOZoB@cluster0.4jdnb6b.mongodb.net/sample_mflix?retryWrites=true&w=majority');
+
+app.listen(HTTP_PORT, () => {
+    console.log(`server listening on: ${HTTP_PORT}`);
+});
