@@ -47,22 +47,22 @@ module.exports = class MoviesDB {
 
     // Pass the connection string to `initialize()`
     initialize(connectionString) {
-        return new Promise((resolve, reject) => {
-            const db = mongoose.createConnection(
-                connectionString, {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true
-                }
-            );
+        // return new Promise((resolve, reject) => {
+        //     const db = mongoose.createConnection(
+        //         connectionString, {
+        //             useNewUrlParser: true,
+        //             useUnifiedTopology: true
+        //         }
+        //     );
 
-            db.once('error', (err) => {
-                reject(err);
-            });
-            db.once('open', () => {
-                this.Movie = db.model("movies", movieSchema);
-                resolve();
-            });
-        });
+        //     db.once('error', (err) => {
+        //         reject(err);
+        //     });
+        //     db.once('open', () => {
+        //         this.Movie = db.model("movies", movieSchema);
+        //         resolve();
+        //     });
+        // });
     }
 
     async addNewMovie(data) {
