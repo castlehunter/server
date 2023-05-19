@@ -34,8 +34,6 @@ app.get('/123', (req, res) => {
 });
 
 
-db.initialize('mongodb+srv://vvxiaobai:jx9EtluVV5JvOZoB@cluster0.4jdnb6b.mongodb.net/sample_mflix?retryWrites=true&w=majority');
-
 
 app.post('/api/movies', (req, res) => {
     db.addNewMovie(req.body)
@@ -102,14 +100,10 @@ app.delete('/api/movies/:id', (req, res) => {
         });
 });
 
-// db.initialize('mongodb+srv://vvxiaobai:jx9EtluVV5JvOZoB@cluster0.4jdnb6b.mongodb.net/sample_mflix?retryWrites=true&w=majority').then(() => {
-//     app.listen(HTTP_PORT, () => {
-//         console.log(`server listening on: ${HTTP_PORT}`);
-//     });
-// }).catch((err) => {
-//     console.log(err);
-// });
-
-app.listen(HTTP_PORT, () => {
-    console.log(`server listening on: ${HTTP_PORT}`);
+db.initialize(process.env.MONGODB_CONN_STRING).then(() => {
+    app.listen(HTTP_PORT, () => {
+        console.log(`server listening on: ${HTTP_PORT}`);
+    });
+}).catch((err) => {
+    console.log(err);
 });
