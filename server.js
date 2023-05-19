@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
     res.json({ message: "API Listening..." });
 })
 
+app.get('/123', (req, res) => {
+    res.json({ message: "123" })
+})
+
 app.post('/api/movies', (req, res) => {
     db.addNewMovie(req.body)
         .then(theNewMovie => {
