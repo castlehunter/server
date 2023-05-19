@@ -46,6 +46,7 @@ app.post('/api/movies', (req, res) => {
         });
 })
 
+// Use this to test: http://localhost:8080/api/movies?page=1&perPage=5&title=The%20Avengers
 app.get('/api/movies', (req, res) => {
     let page = req.query.page;
     let perPage = req.query.perPage;
@@ -60,6 +61,7 @@ app.get('/api/movies', (req, res) => {
         })
 })
 
+// Use this ID to test: 573a1390f29313caabcd42e8
 app.get('/api/movies/:id', (req, res) => {
     db.getMovieById(req.params.id)
         .then(theMovie => {
