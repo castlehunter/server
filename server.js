@@ -23,13 +23,6 @@ const db = new MoviesDB();
 app.use(express.json());
 app.use(cors());
 
-db.initialize(process.env.MONGODB_CONN_STRING).then(() => {
-    app.listen(HTTP_PORT, () => {
-        console.log(`server listening on: ${HTTP_PORT}`);
-    });
-}).catch((err) => {
-    console.log(err);
-});
 
 
 app.get('/', (req, res) => {
@@ -98,4 +91,12 @@ app.delete('/api/movies/:id', (req, res) => {
         .catch(error => {
             res.status(500).json({ message: "Server error." });
         });
+});
+
+db.initialize(process.env.MONGODB_CONN_STRING).then(() => {
+    app.listen(HTTP_PORT, () => {
+        console.log(`server listening on: ${HTTP_PORT}`);
+    });
+}).catch((err) => {
+    console.log(err);
 });
