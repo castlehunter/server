@@ -1,0 +1,11 @@
+#moviesTable tr:hover {
+    cursor: pointer;
+}
+
+#heading {
+    font-weight: bold;
+}
+
+#clearForm {
+    margin-left: 8px;
+}

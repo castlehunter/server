@@ -4,8 +4,8 @@
  *  No part of this assignment has been copied manually or electronically from any other source
  *  (including web sites) or distributed to other students.
  * 
- *  Name: Qing Zhang     Student ID: 130982218     Date: 19-5-2023
- *  Cyclic Link: _______________________________________________________________
+ *  Name: Qing Zhang     Student ID: 130982218     Date: 19-May-2023
+ *  Cyclic Link: https://periwinkle-hare-boot.cyclic.app
  *
  ********************************************************************************/
 
@@ -19,21 +19,13 @@ const HTTP_PORT = process.env.PORT || 8080;
 const MoviesDB = require("./modules/moviesDB.js");
 const db = new MoviesDB();
 
-
 app.use(express.json());
 app.use(cors());
-
 
 
 app.get('/', (req, res) => {
     res.json({ message: "API Listening..." });
 })
-
-app.get('/123', (req, res) => {
-    res.json({ message: "123" })
-});
-
-
 
 app.post('/api/movies', (req, res) => {
     db.addNewMovie(req.body)
@@ -75,7 +67,7 @@ app.put('/api/movies/:id', (req, res) => {
     if (req.params.id == req.body._id) {
         db.updateMovieById(req.body, req.body._id)
             .then(theMovie => {
-                res.json({ message: `The movie ${theMovie.title} is updated.` })
+                res.json({ message: `The movie with ID ${theMovie._id} is updated.` })
             })
             .catch(error => {
                 res.status(404).json({ message: "Not able to find the record." });
@@ -86,7 +78,6 @@ app.put('/api/movies/:id', (req, res) => {
 });
 
 app.delete('/api/movies/:id', (req, res) => {
-
     db.deleteMovieById(req.params.id)
         .then(theResult => {
             if (theResult.deletedCount === 1) {
